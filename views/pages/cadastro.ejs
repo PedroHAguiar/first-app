@@ -1,49 +1,65 @@
 <%- contentFor( 'body') %>
 
-<div class="jumbotron">
-    <form action="/cadastro/create" method="post">
-        <fieldset>
-            <h4>Nome</h4>
-            <input type="text" name="nome" id="nome">
-        </fieldset>
+<h2>Usuários Cadastrados</h2>
+<p>Lista de usuários Cadastrados no sistema.</p>            
+<table class="table table-hover bg-light" id="list">
+    <thead class="thead-dark">
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Endereço</th>
+        <th>Idade</th>
+        <th>Altura</th>
+        <th>Vota?</th>
+        <th>Editar</th>
+        <th>Remover</th>
+    </tr>
+    </thead>
+    <tbody>
 
-        <div class="field-group">
-            <fieldset>
-                <h4>Email</h4>
-                <input type="email" name="email" id="email">
-            </fieldset>
-            
-            <fieldset>
-                <h4>Endereço</h4>
-                <input type="text" name="endereco" id="endereco">
-            </fieldset>
+        <% let linkRemove="/cadastro/remove/"; %>
+        <% let linkUpdate="/cadastro/update/"; %> 
+
+    </tbody>
+</table>
+
+<div class="table-responsive-xl ">
+
+    <h2>Cadastrar novo usuário</h2>
+
+    <form action="/cadastro/add" method="post">
+        <div class="form-group">
+            <label for="_name">Nome:</label>
+            <input type="text" name="_name" id="_name" class="form-control" required>
         </div>
-        
-        <div class="field-group">
-            <fieldset>
-                <h4>Idade</h4>
-                <input type="number" name="idade" id="idade">
-            </fieldset>
-            
-            <fieldset>
-                <h4>Altura</h4>
-                <input type="number" name="altura" id="altura">
-            </fieldset>
+
+        <div class="form-group">
+            <label for="_address">Endereço:</label>
+            <input type="text" name="_address" id="_address" class="form-control" required>
         </div>
-        
-        <fieldset>
-            <label for="voto_true">
-                <input type="radio" name="voto_true" class="voto">
-                True
-            </label>
 
-            <label for="voto_false">
-                <input type="radio" name="voto_false" class="voto">
-                False
-            </label>
-        </fieldset>
+        <div class="form-group">
+            <label for="_email">E-mail:</label>
+            <input type="email" name="_email" id="_email" class="form-control" required>
+        </div>
 
-        <button type="submit">Fazer cadastro</button>
+        <div class="form-group">
+            <label for="_heigth">Altura:</label>
+            <input type="number"  name="_heigth" id="_heigth" class="form-control" step=".01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="_age">Idade:</label>
+            <input type="number" name="_age" id="_age" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="_vote">Votou:</label>
+            <input type="text" name="_vote" id="_vote" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Enviar"  class="btn btn-success">
+        </div>
     </form>
 </div>
-
